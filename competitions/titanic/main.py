@@ -102,8 +102,11 @@ print(f"type of test_data: {type(test_data)}")
 print(f"type of test_data_used: {type(test_data_used)}")
 print(f"type of test_data_transformed: {type(test_data_transformed)}")
 print(f"type of y_pred: {type(y_pred)}")
+print(f"shape of y_pred: {y_pred.shape}")
 
 test_data["Survived"] = y_pred
 
+result = pd.DataFrame({"PassengerId": test_data['PassengerId'], "Survived": y_pred})
+
 # right result to a .csv file
-test_data.to_csv("lr_result.csv", sep=",")
+result.to_csv("lr_result.csv", index=False)
